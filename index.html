@@ -23,17 +23,18 @@
 
         function checkAccessToken() {
     const hash = window.location.hash.substring(1);
+    console.log(hash); // Tambahkan log untuk melihat isi hash
     const params = new URLSearchParams(hash);
     const accessToken = params.get("access_token");
 
     if (accessToken) {
         localStorage.setItem("spotify_access_token", accessToken);
         window.history.replaceState({}, document.title, window.location.pathname);
+        console.log("Access Token: " + accessToken); // Log token
     }
 
     return localStorage.getItem("spotify_access_token");
 }
-
 
         async function getUserProfile(token) {
             try {
